@@ -7,10 +7,7 @@ jobs:
   greet:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Display PR Info
-        run: |
-          echo "This is my code now"
+jobs:
+  pr-ci:
+    uses: ./.github/workflows/server-ci-template.yml
+    secrets: inherit
