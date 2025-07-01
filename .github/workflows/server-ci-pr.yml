@@ -2,19 +2,21 @@ name: Server CI PR
 
 on:
   pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [main]
-
-# This file just imports the template yml
-# and runs it with concurrency. We have to do this in this way
-# because the concurrency label cannot be added conditionally
-# and it _always_ cancels pending workflows. So master CI builds
-# always kept getting canceled.
+    types: [opened]
 
 jobs:
-  pr-ci:
+  greet:
     runs-on: ubuntu-latest
+
     steps:
-    - name: logs
-      run: |
-        echo "Hello world";
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Say Hello
+        run: echo "🎉 A new pull request has been opened!"
+
+      - name: Display PR Info
+        run: |
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "PR Author: ${{ github.event.pull_request.user.login }}"
+          echo "PR Branch: ${{ github.head_ref }}"
