@@ -1,0 +1,19 @@
+name: test2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check_vars:
+    if: github.repository_owner == 'savio-doyensec' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-22.04
+    steps:
+      - name: make_vars
+        run: |
+          echo "PACKAGES_FILE_LIST<<EOF" >> "${GITHUB_ENV}"
+          echo "file1" >> "${GITHUB_ENV}"
+          echo "file2" >> "${GITHUB_ENV}"
+          echo "EOF" >> "${GITHUB_ENV}"
+      - name: echo_vars
+        run: |
+          echo "$PACKAGES_FILE_LIST"
