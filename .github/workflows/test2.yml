@@ -12,6 +12,11 @@ jobs:
           echo "PACKAGES_FILE_LIST<<EOF" >> "${GITHUB_ENV}"
           echo "file1" >> "${GITHUB_ENV}"
           echo "file2" >> "${GITHUB_ENV}"
+          echo "file3\nfile4" >> "${GITHUB_ENV}"
+          echo "$(id)" >> "${GITHUB_ENV}"
+          echo "$USER" >> "${GITHUB_ENV}"
+          echo "asdfEOF" >> "${GITHUB_ENV}"
+          echo "ABC=123" >> "${GITHUB_ENV}"
           echo "EOF" >> "${GITHUB_ENV}"
       - name: echo_vars
         run: |
