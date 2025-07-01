@@ -1,0 +1,17 @@
+name: Server CI PR
+on:
+  pull_request:
+
+# This file just imports the template yml
+# and runs it with concurrency. We have to do this in this way
+# because the concurrency label cannot be added conditionally
+# and it _always_ cancels pending workflows. So master CI builds
+# always kept getting canceled.
+
+jobs:
+  pr-ci:
+    runs-on: ubuntu-latest
+    steps:
+    - name: log
+      run: |
+        echo "Hello world";
