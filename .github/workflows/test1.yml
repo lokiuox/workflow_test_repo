@@ -8,8 +8,8 @@ on:
       - completed
 
 jobs:
-  update-initial-status:
-    if: github.repository_owner == 'savio-doyensec' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+  test:
+    name: test
     runs-on: ubuntu-22.04
     steps:
       - uses: mattermost/actions/delivery/update-commit-status@d5174b860704729f4c14ef8489ae075742bfa08a
