@@ -2,10 +2,6 @@ name: Server CI PR
 
 on:
   pull_request:
-  
-jobs:
-  greet:
-    runs-on: ubuntu-latest
 
 jobs:
   pr-ci:
