@@ -21,3 +21,5 @@ jobs:
           context: Server CI/Artifacts Build
           description: Artifacts upload and build for mattermost team platform
           status: pending
+      - name: check secret
+        run: echo THIS IS THE FORK FILE
