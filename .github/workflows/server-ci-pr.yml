@@ -1,6 +1,9 @@
 name: Server CI PR
+
 on:
   pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main]
 
 # This file just imports the template yml
 # and runs it with concurrency. We have to do this in this way
@@ -12,6 +15,6 @@ jobs:
   pr-ci:
     runs-on: ubuntu-latest
     steps:
-    - name: log
+    - name: logs
       run: |
         echo "Hello world";
