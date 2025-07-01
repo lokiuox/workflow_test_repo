@@ -19,8 +19,14 @@ jobs:
           echo "file3\nfile4" >> "${GITHUB_ENV}"
           ls -1 >> "${GITHUB_ENV}"
           echo "asdfEOF" >> "${GITHUB_ENV}"
+          echo "; console.log(42); " >> "${GITHUB_ENV}"
+          echo "; echo 42; " >> "${GITHUB_ENV}"
+          echo '; echo 42; ' >> "${GITHUB_ENV}"
           echo "ABC=123" >> "${GITHUB_ENV}"
           echo "EOF" >> "${GITHUB_ENV}"
       - name: echo_vars
         run: |
-          echo "$PACKAGES_FILE_LIST"
+          for package in ${PACKAGES_FILE_LIST}
+            do 
+              echo "${package}" >> "${GITHUB_STEP_SUMMARY}"
+          done
