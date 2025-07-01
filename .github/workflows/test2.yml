@@ -5,7 +5,6 @@ on:
 
 jobs:
   check_vars:
-    if: github.repository_owner == 'savio-doyensec' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-22.04
     steps:
       - name: make_vars
