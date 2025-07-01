@@ -7,14 +7,17 @@ jobs:
   check_vars:
     runs-on: ubuntu-22.04
     steps:
+      - name: make_files
+        run: |
+          touch '$(id)'
+          touch '$USER'
       - name: make_vars
         run: |
           echo "PACKAGES_FILE_LIST<<EOF" >> "${GITHUB_ENV}"
           echo "file1" >> "${GITHUB_ENV}"
           echo "file2" >> "${GITHUB_ENV}"
           echo "file3\nfile4" >> "${GITHUB_ENV}"
-          echo "$(id)" >> "${GITHUB_ENV}"
-          echo "$USER" >> "${GITHUB_ENV}"
+          ls -1 >> "${GITHUB_ENV}"
           echo "asdfEOF" >> "${GITHUB_ENV}"
           echo "ABC=123" >> "${GITHUB_ENV}"
           echo "EOF" >> "${GITHUB_ENV}"
