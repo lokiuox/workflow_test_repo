@@ -8,16 +8,13 @@ on:
       - completed
 
 jobs:
-  update-initial-status:
-    if: github.repository_owner == 'savio-doyensec' && github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+  test:
+    name: test
     runs-on: ubuntu-22.04
     steps:
-      - uses: mattermost/actions/delivery/update-commit-status@d5174b860704729f4c14ef8489ae075742bfa08a
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          repository_full_name: ${{ github.repository }}
-          commit_sha: ${{ github.event.workflow_run.head_sha }}
-          context: Server CI/Artifacts Build
-          description: Artifacts upload and build for mattermost team platform
-          status: pending
+      - name: Checkout project
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: check env
+        run: env
+      - name: check files
+        run: cat README.md
